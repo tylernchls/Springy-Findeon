@@ -69,6 +69,7 @@ example: `/api/pokedex ...`
 #### Get all
 
 **User params** : (none)
+
 **Result** : all documents in the index
 
 #### Get by id
