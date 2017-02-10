@@ -14,7 +14,6 @@ describe('GET /api/pokedex',  function() {
         if(err) {
           throw new Error(err);
         }
-        console.log('res.body: ', res.body);
         expect(res.body).to.be.instanceof(Array);
         done()
       });

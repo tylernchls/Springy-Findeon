@@ -25,5 +25,24 @@ router.route('/')
   })
 
 
+router.route('/:id')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          match: {
+            _id: req.params.id
+          }
+        }
+      }
+    })
+    .then((body) => {
+      res.json(body);
+    })
+  })
+
+
 
 module.exports = router;
