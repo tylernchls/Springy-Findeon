@@ -48,7 +48,7 @@ router.route('/:id')
     })
   })
 
-router.route('/name/:id')
+router.route('/nameContains/:id')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
@@ -72,7 +72,7 @@ router.route('/name/:id')
     })
   })
 
-router.route('/startsWith/:id')
+router.route('/nameStartsWith/:id')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
