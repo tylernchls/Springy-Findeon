@@ -95,6 +95,8 @@ example: `/api/pokedex ...`
 
 **Example**: Will return 800 results.
 
+
+
 **Get by id**
 
 **User params : id**
@@ -102,6 +104,8 @@ example: `/api/pokedex ...`
 **Result** : An array of 0 or 1 document that has an id that matches the id.
 
 **Example**: Parameter ****id** = 1 will return the bulbasaur document.
+
+
 
 **Search name**
 
