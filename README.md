@@ -95,7 +95,7 @@ example: `/api/pokedex ...`
 
 **Example**: Will not return all 800 results, just a snippet of the total index.
 
-**Testable Route**: http://localhost:3000/api/pokedex
+**Testable Route**: http://localhost:3000/api/pokedex/
 
 ##Get by id
 
