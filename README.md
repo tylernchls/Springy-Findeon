@@ -87,7 +87,7 @@ Based on the requirements in the following table, design your own API endpoints 
 All api routes should be mounted on the `/api/` route.
 example: `/api/pokedex ...`
 
-GET ALL
+**GET ALL**
 
 **User params** : (none)
 
