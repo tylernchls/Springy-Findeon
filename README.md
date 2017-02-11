@@ -24,6 +24,9 @@ Test The Routes
 - follow the routes specified below to start getting data from your index
 - ENJOY
 
+Routes I created(feel free to test or make your own)
+
+
 Helpful Commands & Resources
 - delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
 - list all indices : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
@@ -90,7 +93,7 @@ example: `/api/pokedex ...`
 
 **User params** : (none)
 **Result** : all documents in the index
-- RouteToTest : localhost:3000/api/pokedex
+
 #### Get by id
 
 **User params** : **id**
