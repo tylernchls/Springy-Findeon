@@ -25,8 +25,8 @@ Test The Routes
 - ENJOY
 
 Helpful Commands & Resources
-delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
-list all indices : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+- delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
+- list all indices : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
 http://elasticsearch-cheatsheet.jolicode.com/
 
 
