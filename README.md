@@ -127,7 +127,7 @@ example: `/api/pokedex ...`
 
 **Example** : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
 
-**Testable Route**: localhost:3000/api/nameStartsWith/star
+**Testable Route**: localhost:3000/api/pokedex/nameStartsWith/star
 
 ##Types, or
 
