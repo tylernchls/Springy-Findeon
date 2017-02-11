@@ -116,7 +116,7 @@ example: `/api/pokedex ...`
 
 ##Name starts with
 
-**User params : prefix
+**User params : prefix**
 
 **Result** : An array of documents where the name property starts with prefix.
 
