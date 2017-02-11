@@ -18,7 +18,5 @@ if(process.env.ENVIRONMENT !== 'TEST') {
 
 }
 
-
-
 module.exports = app;
 

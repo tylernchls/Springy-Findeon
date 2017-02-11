@@ -19,11 +19,10 @@ describe('GET /api/pokedex',  function() {
         done()
       });
   });
-
 });
 
 describe('GET /api/pokedex/:id',  function() {
-  it('should return the pokemon object that corresponds to its id', function(done) {
+  it('should return the pokemon object that corresponds to id searched', function(done) {
     request(app)
       .get('/api/pokedex/0')
       .expect('Content-Type', /json/)
@@ -37,11 +36,10 @@ describe('GET /api/pokedex/:id',  function() {
         done()
       });
   });
-
 });
 
 describe('GET /api/pokedex/nameContains/:name',  function() {
-  it('should return an array of pokemon names that have "sy" in their name ', function(done) {
+  it('should return an array of pokemon names where name property matches query (ex. nameContains/sy) ', function(done) {
     request(app)
       .get('/api/pokedex/nameContains/sy')
       .expect('Content-Type', /json/)
@@ -56,11 +54,10 @@ describe('GET /api/pokedex/nameContains/:name',  function() {
         done()
       });
   });
-
 });
 
 describe('GET /api/pokedex/nameStartsWith/name',  function() {
-  it('should return an array of pokemon names that "star" ', function(done) {
+  it('should return an array of pokemon names where name property starts with prefix (ex. nameStartsWith/star) ', function(done) {
     request(app)
       .get('/api/pokedex/nameStartsWith/star')
       .expect('Content-Type', /json/)
@@ -79,7 +76,6 @@ describe('GET /api/pokedex/nameStartsWith/name',  function() {
         done()
       });
   });
-
 });
 
 describe('GET /api/pokedex/typeOR/type',  function() {

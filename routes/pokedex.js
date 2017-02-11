@@ -20,7 +20,6 @@ router.route('/')
     })
     .catch((err) => {
       console.log(err);
-
     })
   })
 
@@ -55,9 +54,9 @@ router.route('/nameContains/:name')
       type: 'pokemon',
       body: {
         query: {
-            wildcard: {
-              name: `*${req.params.name}*`
-            }
+          wildcard: {
+            name: `*${req.params.name}*`
+          }
         }
       }
     })
@@ -79,9 +78,9 @@ router.route('/nameStartsWith/:name')
       type: 'pokemon',
       body: {
         query: {
-            prefix: {
-              name: req.params.name
-            }
+          prefix: {
+            name: req.params.name
+          }
         }
       }
     })
@@ -103,9 +102,9 @@ router.route('/typeOR/:type')
       type: 'pokemon',
       body: {
         query: {
-            match: {
-              types: req.params.type
-            }
+          match: {
+            types: req.params.type
+          }
         }
       }
     })
@@ -155,6 +154,30 @@ router.route('/types/:type1/:type2/:type3')
     })
     .then((body) => {
       res.json(body.hits.total);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
+
+router.route('/stat/:stat/:value')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          match: {
+            [`${req.params.stat}`]: req.params.value
+          }
+        }
+      }
+    })
+    .then((body) => {
+      allPokemon = body.hits.hits.map((pokemon) => {
+        return pokemon._source;
+      })
+      res.json(allPokemon);
     })
     .catch((err) => {
       console.log(err);
@@ -239,9 +262,5 @@ router.route('/statBetween/:stat/:value1/:value2')
       console.log(err);
     })
   })
-
-
-
-
 
 module.exports = router;
