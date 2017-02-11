@@ -24,8 +24,6 @@ Test The Routes
 - follow the routes specified below to start getting data from your index
 - ENJOY
 
-Routes I created(feel free to test or make your own)
-
 
 Helpful Commands & Resources
 - delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
