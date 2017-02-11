@@ -96,8 +96,7 @@ example: `/api/pokedex ...`
 **Example**: Will return 800 results.
 
 
-
-**Get by id**
+##Get by id
 
 **User params : id**
 
@@ -107,7 +106,7 @@ example: `/api/pokedex ...`
 
 
 
-**Search name**
+##Search name
 
 **User params** : query
 
@@ -115,7 +114,7 @@ example: `/api/pokedex ...`
 
 **Example** : query = sy will return 2 results: psyduck, and sylveon.
 
-**Name starts with**
+##Name starts with
 
 **User params : prefix
 
@@ -123,7 +122,7 @@ example: `/api/pokedex ...`
 
 **Example** : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
 
-**Types, or**
+##Types, or
 
 **User params** : Types as a set of strings.
 
@@ -133,7 +132,7 @@ example: `/api/pokedex ...`
 
 **Example** : **types** = fire and ice will return 105 results.
 
-**Types, and**
+##Types, and
 
 **User params** : Types as a set of strings.
 
@@ -145,15 +144,15 @@ example: `/api/pokedex ...`
 
 **Example** : **types** = water, grass and flying will return 0 results.
 
-**Stat equals value**
+**Stat equals value
 
-**User params : stat - value.
+##User params : stat - value.
 
 **Result** : An array of documents where the stat property matches value.
 
 **Example** : **stat** = HP **value** = 160 will return 1 result: snorlax.
 
-**Stat above value**
+##Stat above value
 
 **User params : stat - value.
 
@@ -161,7 +160,7 @@ example: `/api/pokedex ...`
 
 **Example** : **stat** = attack **value** = 180 will return 5 results: mewtwomegamewtwox, heracrossmegaheracross, groudonprimalgroudon, deoxysattackforme, and rayquazamegarayquaza.
 
-**Stat below value**
+##Stat below value
 
 **User params : stat - value.
 
@@ -169,7 +168,7 @@ example: `/api/pokedex ...`
 
 **Example** : **stat** = defense **value** = 10 will return 2 results: chansey and happiny.
 
-**Stat between low and high values**
+##Stat between low and high values
 
 **User params : stat - low - high.
 
@@ -177,13 +176,3 @@ example: `/api/pokedex ...`
 
 **Example** : **stat** = totalStats **low** = 750 **high** = 800 will return 5 results: mewtwomegamewtwox, mewtwomegamewtwox, kyogreprimalkyogre, groudonprimalgroudon, and rayquazamegarayquaza.
 
-Once your endpoints have been approved by an instructor, implement each endpoint one at a time, while providing the requested subset of data.
-
-In express, create an es client, and query the es database to retrieve data for each endpoint.
-
-
-### Optional
-
-Create a browser application with user controls to display query results.
-
-Hint: express static, `./public`, xhr requests to api
