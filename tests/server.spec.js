@@ -104,6 +104,7 @@ describe('GET /api/pokedex/typeAND/:type1/:type2',  function() {
     request(app)
       .get('/api/pokedex/typeAND/water/grass')
       .expect('Content-Type', /json/)
+      .expect(200)
       .end(function(err, res) {
         if(err) {
           throw new Error(err);
@@ -120,11 +121,78 @@ describe('GET /api/pokedex/types/:type1/:type2/:type3',  function() {
     request(app)
       .get('/api/pokedex/types/water/grass/flying')
       .expect('Content-Type', /json/)
+      .expect(200)
       .end(function(err, res) {
         if(err) {
           throw new Error(err);
         }
         expect(res.body).to.equal(0);
+        done()
+      });
+  });
+
+});
+
+describe('GET /api/pokedex/statGreaterThan/:stat/:value',  function() {
+  it('it should return an array of pokemon whose stat value is >= stat-value searched for (ex. attack/180) ', function(done) {
+    request(app)
+      .get('/api/pokedex/statGreaterThan/attack/180')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        if(err) {
+          throw new Error(err);
+        }
+        expect(res.body.length).to.equal(5);
+        expect(res.body).to.be.instanceof(Array);
+        expect(res.body[0].name).to.equal("mewtwomegamewtwox");
+        expect(res.body[1].name).to.equal("heracrossmegaheracross");
+        expect(res.body[2].name).to.equal("groudonprimalgroudon");
+        expect(res.body[3].name).to.equal("deoxysattackforme");
+        expect(res.body[4].name).to.equal("rayquazamegarayquaza");
+        done()
+      });
+  });
+
+});
+
+describe('GET /api/pokedex/statLessThan/:stat/:value',  function() {
+  it('it should return an array of pokemon whose stat value is < stat-value searched for (ex. defense/10) ', function(done) {
+    request(app)
+      .get('/api/pokedex/statLessThan/defense/10')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        if(err) {
+          throw new Error(err);
+        }
+        expect(res.body.length).to.equal(2);
+        expect(res.body).to.be.instanceof(Array);
+        expect(res.body[0].name).to.equal("chansey");
+        expect(res.body[1].name).to.equal("happiny");
+        done()
+      });
+  });
+
+});
+
+describe('GET /api/pokedex/statBetween/:stat/:value1/:value2',  function() {
+  it('it should return an array of pokemon whose stat value is >= low value & < high value (ex. totalStats/750/800)', function(done) {
+    request(app)
+      .get('/api/pokedex/statBetween/totalStats/750/800')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        if(err) {
+          throw new Error(err);
+        }
+        expect(res.body.length).to.equal(5);
+        expect(res.body).to.be.instanceof(Array);
+        expect(res.body[0].name).to.equal("mewtwomegamewtwoy");
+        expect(res.body[1].name).to.equal("mewtwomegamewtwox");
+        expect(res.body[2].name).to.equal("kyogreprimalkyogre");
+        expect(res.body[3].name).to.equal("groudonprimalgroudon");
+        expect(res.body[4].name).to.equal("rayquazamegarayquaza");
         done()
       });
   });

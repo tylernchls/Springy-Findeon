@@ -161,7 +161,7 @@ router.route('/types/:type1/:type2/:type3')
     })
   })
 
-router.route('/statGreaterThan/:value')
+router.route('/statGreaterThan/:stat/:value')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
@@ -169,24 +169,76 @@ router.route('/statGreaterThan/:value')
       body: {
         query: {
           range : {
-            attack : {
-                gt : `${req.params.value}`,
-                boost: 2.0
+            [`${req.params.stat}`] : {
+                gte : `${req.params.value}`
             }
-        }
+          }
         }
       }
     })
     .then((body) => {
-      res.json(body);
+      allPokemon = body.hits.hits.map((pokemon) => {
+        return pokemon._source;
+      })
+      res.json(allPokemon);
     })
     .catch((err) => {
       console.log(err);
     })
   })
 
+router.route('/statLessThan/:stat/:value')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          range : {
+            [`${req.params.stat}`] : {
+                lt : `${req.params.value}`
+            }
+          }
+        }
+      }
+    })
+    .then((body) => {
+      allPokemon = body.hits.hits.map((pokemon) => {
+        return pokemon._source;
+      })
+      res.json(allPokemon);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
 
-
+router.route('/statBetween/:stat/:value1/:value2')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          range : {
+            [`${req.params.stat}`] : {
+                gte : `${req.params.value1}`,
+                lt  : `${req.params.value2}`
+            }
+          }
+        }
+      }
+    })
+    .then((body) => {
+      allPokemon = body.hits.hits.map((pokemon) => {
+        return pokemon._source;
+      })
+      res.json(allPokemon);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
 
 
 
