@@ -40,7 +40,7 @@ describe('GET /api/pokedex/:id',  function() {
 
 });
 
-describe('GET /api/pokedex/nameContains/:id',  function() {
+describe('GET /api/pokedex/nameContains/:name',  function() {
   it('should return an array of pokemon names that have "sy" in their name ', function(done) {
     request(app)
       .get('/api/pokedex/nameContains/sy')
@@ -59,7 +59,7 @@ describe('GET /api/pokedex/nameContains/:id',  function() {
 
 });
 
-describe('GET /api/pokedex/nameStartsWith/:id',  function() {
+describe('GET /api/pokedex/nameStartsWith/name',  function() {
   it('should return an array of pokemon names that "star" ', function(done) {
     request(app)
       .get('/api/pokedex/nameStartsWith/star')
@@ -82,19 +82,51 @@ describe('GET /api/pokedex/nameStartsWith/:id',  function() {
 
 });
 
-describe('GET /api/pokedex/types/:id',  function() {
-  it('should return a total of 64 pokemon of types fire  ', function(done) {
+describe('GET /api/pokedex/typeOR/type',  function() {
+  it('should return a total of 105 pokemon of types fire OR ICE  ', function(done) {
     request(app)
-      .get('/api/pokedex/types/fire')
+      .get('/api/pokedex/typeOR/fire&ice')
       .expect('Content-Type', /json/)
+      .expect(200)
       .end(function(err, res) {
         if(err) {
           throw new Error(err);
         }
-        expect(res.body).to.equal(64);
+        expect(res.body).to.equal(105);
         done()
       });
   });
 
 });
 
+describe('GET /api/pokedex/typeAND/:type1/:type2',  function() {
+  it('should return a total of pokemon that has type1 AND type2 (ex.water AND grass)  ', function(done) {
+    request(app)
+      .get('/api/pokedex/typeAND/water/grass')
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if(err) {
+          throw new Error(err);
+        }
+        expect(res.body).to.equal(3);
+        done()
+      });
+  });
+
+});
+
+describe('GET /api/pokedex/types/:type1/:type2/:type3',  function() {
+  it('should return a total of pokemon that has type1, type2, AND type3 (ex.water,grass, AND flying)  ', function(done) {
+    request(app)
+      .get('/api/pokedex/types/water/grass/flying')
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if(err) {
+          throw new Error(err);
+        }
+        expect(res.body).to.equal(0);
+        done()
+      });
+  });
+
+});

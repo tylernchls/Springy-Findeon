@@ -48,7 +48,7 @@ router.route('/:id')
     })
   })
 
-router.route('/nameContains/:id')
+router.route('/nameContains/:name')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
@@ -56,7 +56,7 @@ router.route('/nameContains/:id')
       body: {
         query: {
             wildcard: {
-              name: `*${req.params.id}*`
+              name: `*${req.params.name}*`
             }
         }
       }
@@ -72,7 +72,7 @@ router.route('/nameContains/:id')
     })
   })
 
-router.route('/nameStartsWith/:id')
+router.route('/nameStartsWith/:name')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
@@ -80,7 +80,7 @@ router.route('/nameStartsWith/:id')
       body: {
         query: {
             prefix: {
-              name: req.params.id
+              name: req.params.name
             }
         }
       }
@@ -96,7 +96,7 @@ router.route('/nameStartsWith/:id')
     })
   })
 
-router.route('/types/:id')
+router.route('/typeOR/:type')
   .get((req, res) => {
     client.search({
       index: 'pokedex',
@@ -104,7 +104,7 @@ router.route('/types/:id')
       body: {
         query: {
             match: {
-              types: req.params.id
+              types: req.params.type
             }
         }
       }
@@ -116,6 +116,77 @@ router.route('/types/:id')
       console.log(err);
     })
   })
+
+router.route('/typeAND/:type1/:type2')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          query_string : {
+            default_field : "types",
+            query : `${req.params.type1} AND ${req.params.type2}`
+          }
+        }
+      }
+    })
+    .then((body) => {
+      res.json(body.hits.total);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
+
+router.route('/types/:type1/:type2/:type3')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          query_string : {
+            default_field : "types",
+            query : `${req.params.type1} AND ${req.params.type2} AND ${req.params.type3}`
+          }
+        }
+      }
+    })
+    .then((body) => {
+      res.json(body.hits.total);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
+
+router.route('/statGreaterThan/:value')
+  .get((req, res) => {
+    client.search({
+      index: 'pokedex',
+      type: 'pokemon',
+      body: {
+        query: {
+          range : {
+            attack : {
+                gt : `${req.params.value}`,
+                boost: 2.0
+            }
+        }
+        }
+      }
+    })
+    .then((body) => {
+      res.json(body);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  })
+
+
+
 
 
 

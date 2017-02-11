@@ -17,13 +17,13 @@ const pokedex = require('./data/pokedex');
 //     id: index,
 //     body: {
 //       name: pokemon.name,
-//       totalStats: pokemon.totalStats,
-//       HP: pokemon.HP,
-//       attack: pokemon.attack,
-//       defense: pokemon.defense,
-//       spAtk: pokemon.spAtk,
-//       spDef: pokemon.spDef,
-//       speed: pokemon.speed,
+//       totalStats: Number(pokemon.totalStats),
+//       HP: Number(pokemon.HP),
+//       attack: Number(pokemon.attack),
+//       defense: Number(pokemon.defense),
+//       spAtk: Number(pokemon.spAtk),
+//       spDef: Number(pokemon.spDef),
+//       speed: Number(pokemon.speed),
 //       types: pokemon.types
 //     }
 //   }, function (error, response) {
@@ -37,7 +37,11 @@ const pokedex = require('./data/pokedex');
 
 
 
-curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+// curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+
+// curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
+
+
 
 
 
