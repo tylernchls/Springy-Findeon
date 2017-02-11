@@ -2,7 +2,7 @@
 
 ElasticSearch exercise on an express api
 
-Use the raw `elastic-search` npm library, do not use any extra query building libraries for this exercise.
+Use the raw `elastic-search` npm library
 
 # Run and Test this project
 
@@ -93,7 +93,7 @@ example: `/api/pokedex ...`
 
 **Result** : An array with all documents in the index.
 
-**Example**: Will return 800 results.
+**Example**: Will not return all 800 results, just a snippet of the total index.
 
 **Testable Route**: localhost:3000/api/pokedex
 
@@ -103,7 +103,9 @@ example: `/api/pokedex ...`
 
 **Result** : An array of 0 or 1 document that has an id that matches the id.
 
-**Example**: Parameter ****id** = 1 will return the bulbasaur document.
+**Example**: Parameter **id** = 0 will return the bulbasaur document.
+
+**Testable Route**: localhost:3000/api/pokedex/0
 
 
 
@@ -115,6 +117,8 @@ example: `/api/pokedex ...`
 
 **Example** : query = sy will return 2 results: psyduck, and sylveon.
 
+**Testable Route**: localhost:3000/api/pokedex/nameContains/sy
+
 ##Name starts with
 
 **User params : prefix**
@@ -122,6 +126,8 @@ example: `/api/pokedex ...`
 **Result** : An array of documents where the name property starts with prefix.
 
 **Example** : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
+
+**Testable Route**: localhost:3000/api/nameStartsWith/star
 
 ##Types, or
 
@@ -132,6 +138,10 @@ example: `/api/pokedex ...`
 **Example** : **types** = fire will return 64 results.
 
 **Example** : **types** = fire and ice will return 105 results.
+
+**Testable Route**: localhost:3000/api/pokedex/typeOR/fire
+
+**Testable Route**: localhost:3000/api/pokedex/typeOR/fire&ice
 
 ##Types, and
 
@@ -145,6 +155,11 @@ example: `/api/pokedex ...`
 
 **Example** : **types** = water, grass and flying will return 0 results.
 
+**Testable Route**: localhost:3000/api/pokedex/typeAND/water/grass
+
+**Testable Route**: localhost:3000/api/pokedex/typeAND/water/grass/flying
+
+
 ##Stat equals value
 
 **User params** : stat - value.
@@ -152,6 +167,9 @@ example: `/api/pokedex ...`
 **Result** : An array of documents where the stat property matches value.
 
 **Example** : **stat** = HP **value** = 160 will return 1 result: snorlax.
+
+**Testable Route**: localhost:3000/api/pokedex/stat/HP/160
+
 
 ##Stat above value
 
@@ -161,6 +179,9 @@ example: `/api/pokedex ...`
 
 **Example** : **stat** = attack **value** = 180 will return 5 results: mewtwomegamewtwox, heracrossmegaheracross, groudonprimalgroudon, deoxysattackforme, and rayquazamegarayquaza.
 
+**Testable Route**: localhost:3000/api/pokedex/statGreaterThan/attack/180
+
+
 ##Stat below value
 
 **User params** : stat - value.
@@ -169,6 +190,9 @@ example: `/api/pokedex ...`
 
 **Example** : **stat** = defense **value** = 10 will return 2 results: chansey and happiny.
 
+**Testable Route**: localhost:3000/api/pokedex/statLessThan/defense/10
+
+
 ##Stat between low and high values
 
 **User params** : stat - low - high.
@@ -176,4 +200,7 @@ example: `/api/pokedex ...`
 **Result** : An array of documents where the **stat** property is greater than or equal to **low** and less than the **high** parameter.
 
 **Example** : **stat** = totalStats **low** = 750 **high** = 800 will return 5 results: mewtwomegamewtwox, mewtwomegamewtwox, kyogreprimalkyogre, groudonprimalgroudon, and rayquazamegarayquaza.
+
+**Testable Route**: localhost:3000/api/pokedex/statBetween/totalStats/750/800
+
 
