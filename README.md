@@ -21,7 +21,7 @@ Run Tests
 Test The Routes
 - run node server.js, this will start the server (default port is 3000)
 - navigate to localhost:3000/api/pokedex/ in your browser
-- follow the routes specified below to start getting data from your index
+- testable routes below, make sure server is turned on
 - ENJOY
 
 
@@ -95,7 +95,7 @@ example: `/api/pokedex ...`
 
 **Example**: Will not return all 800 results, just a snippet of the total index.
 
-**Testable Route**: http://localhost:3000/api/pokedex/
+**Testable Route**: localhost:3000/api/pokedex/
 
 ##Get by id
 
