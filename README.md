@@ -154,7 +154,7 @@ example: `/api/pokedex ...`
 
 ##Stat above value
 
-**User params : stat - value.
+**User params** : stat - value.
 
 **Result** : An array of documents where the **stat** property is greater or equal than the **value** parameter.
 
@@ -162,7 +162,7 @@ example: `/api/pokedex ...`
 
 ##Stat below value
 
-**User params : stat - value.
+**User params** : stat - value.
 
 **Result** : An array of documents where the **stat** property is less than the **value** parameter.
 
@@ -170,7 +170,7 @@ example: `/api/pokedex ...`
 
 ##Stat between low and high values
 
-**User params : stat - low - high.
+**User params** : stat - low - high.
 
 **Result** : An array of documents where the **stat** property is greater than or equal to **low** and less than the **high** parameter.
 
