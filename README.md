@@ -94,6 +94,7 @@ example: `/api/pokedex ...`
 **Result** : An array with all documents in the index.
 
 **Example**: Will return 800 results.
+
 **Testable Route**: localhost:3000/api/pokedex
 
 ##Get by id
