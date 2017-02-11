@@ -6,7 +6,13 @@ Use the raw `elastic-search` npm library, do not use any extra query building li
 
 # Run and Test this project
 
-_TO BE FILLED IN BY YOU_
+- Fork and clone to local machine
+- navigate to corresponding directory
+- npm install
+
+Index Data
+----------
+
 
 
 
