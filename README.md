@@ -90,7 +90,7 @@ example: `/api/pokedex ...`
 
 **User params** : (none)
 **Result** : all documents in the index
-**RouteToTest** : localhost:3000/api/pokedex
+- RouteToTest : localhost:3000/api/pokedex
 #### Get by id
 
 **User params** : **id**
