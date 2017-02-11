@@ -97,7 +97,7 @@ example: `/api/pokedex ...`
 
 **Get by id**
 
-**User params : id
+**User params : id**
 
 **Result** : An array of 0 or 1 document that has an id that matches the id.
 
