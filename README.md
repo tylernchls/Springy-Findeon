@@ -10,14 +10,24 @@ Use the raw `elastic-search` npm library, do not use any extra query building li
 - navigate to corresponding directory
 - npm install
 
-Index Data
-- run elasticsearch in cmd line to start ElasticSearch server (default port is 9200)
-- run node client.js to create a new index
+Index The Data
+- run 'elasticsearch' in cmd line to start ElasticSearch server (default port is 9200)
+- run node client.js in cmd line, this will create your new index, and index the data
 - check that index was created using curl -XGET 'localhost:9200/_cat/indices?v&pretty' (should contain 800 items)
 
+Run Tests
+- npm test
 
+Test The Routes
+- run node server.js, this will start the server (default port is 3000)
+- navigate to localhost:3000/api/pokedex/ in your browser
+- follow the routes specified below to start getting data from your index
+- ENJOY
 
-
+Helpful Commands & Resources
+delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
+list all indices : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+http://elasticsearch-cheatsheet.jolicode.com/
 
 
 ## Focus
