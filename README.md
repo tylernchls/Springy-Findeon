@@ -89,89 +89,89 @@ example: `/api/pokedex ...`
 
 **Get all**
 
-User params : (none)
+**User params** : (none)
 
-Result : An array with all documents in the index.
+**Result** : An array with all documents in the index.
 
-Example: Will return 800 results.
+**Example**: Will return 800 results.
 
-Get by id
+**Get by id**
 
-User params : id
+**User params : id
 
-Result : An array of 0 or 1 document that has an id that matches the id.
+**Result** : An array of 0 or 1 document that has an id that matches the id.
 
-Example: Parameter id = 1 will return the bulbasaur document.
+**Example**: Parameter ****id** = 1 will return the bulbasaur document.
 
-Search name
+**Search name**
 
-User params : query
+**User params** : query
 
-Result : An array of documents where the name property matches query.
+**Result** : An array of documents where the name property matches query.
 
-Example : query = sy will return 2 results: psyduck, and sylveon.
+**Example** : query = sy will return 2 results: psyduck, and sylveon.
 
-Name starts with
+**Name starts with**
 
-User params : prefix
+**User params : prefix
 
-Result : An array of documents where the name property starts with prefix.
+**Result** : An array of documents where the name property starts with prefix.
 
-Example : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
+**Example** : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
 
-Types, or
+**Types, or**
 
-User params : Types as a set of strings.
+**User params** : Types as a set of strings.
 
-Result : An array of documents where the types property includes any of the types passed in as a parameter.
+**Result** : An array of documents where the types property includes any of the types passed in as a parameter.
 
-Example : types = fire will return 64 results.
+**Example** : **types** = fire will return 64 results.
 
-Example : types = fire and ice will return 105 results.
+**Example** : **types** = fire and ice will return 105 results.
 
-Types, and
+**Types, and**
 
-User params : Types as a set of strings.
+**User params** : Types as a set of strings.
 
-Result : An array of documents where the types property includes all the types passed in as a parameter.
+**Result** : An array of documents where the types property includes all the types passed in as a parameter.
 
-Example : types = fire will return 64 results.
+**Example** : **types** = fire will return 64 results.
 
-Example : types = water and grass will return 3 results.
+**Example** : **types** = water and grass will return 3 results.
 
-Example : types = water, grass and flying will return 0 results.
+**Example** : **types** = water, grass and flying will return 0 results.
 
-Stat equals value
+**Stat equals value**
 
-User params : stat - value.
+**User params : stat - value.
 
-Result : An array of documents where the stat property matches value.
+**Result** : An array of documents where the stat property matches value.
 
-Example : stat = HP value = 160 will return 1 result: snorlax.
+**Example** : **stat** = HP **value** = 160 will return 1 result: snorlax.
 
-Stat above value
+**Stat above value**
 
-User params : stat - value.
+**User params : stat - value.
 
-Result : An array of documents where the stat property is greater or equal than the value parameter.
+**Result** : An array of documents where the **stat** property is greater or equal than the **value** parameter.
 
-Example : stat = attack value = 180 will return 5 results: mewtwomegamewtwox, heracrossmegaheracross, groudonprimalgroudon, deoxysattackforme, and rayquazamegarayquaza.
+**Example** : **stat** = attack **value** = 180 will return 5 results: mewtwomegamewtwox, heracrossmegaheracross, groudonprimalgroudon, deoxysattackforme, and rayquazamegarayquaza.
 
-Stat below value
+**Stat below value**
 
-User params : stat - value.
+**User params : stat - value.
 
-Result : An array of documents where the stat property is less than the value parameter.
+**Result** : An array of documents where the **stat** property is less than the **value** parameter.
 
-Example : stat = defense value = 10 will return 2 results: chansey and happiny.
+**Example** : **stat** = defense **value** = 10 will return 2 results: chansey and happiny.
 
-Stat between low and high values
+**Stat between low and high values**
 
-User params : stat - low - high.
+**User params : stat - low - high.
 
-Result : An array of documents where the stat property is greater than or equal to low and less than the high parameter.
+**Result** : An array of documents where the **stat** property is greater than or equal to **low** and less than the **high** parameter.
 
-Example : stat = totalStats low = 750 high = 800 will return 5 results: mewtwomegamewtwox, mewtwomegamewtwox, kyogreprimalkyogre, groudonprimalgroudon, and rayquazamegarayquaza.
+**Example** : **stat** = totalStats **low** = 750 **high** = 800 will return 5 results: mewtwomegamewtwox, mewtwomegamewtwox, kyogreprimalkyogre, groudonprimalgroudon, and rayquazamegarayquaza.
 
 Once your endpoints have been approved by an instructor, implement each endpoint one at a time, while providing the requested subset of data.
 
