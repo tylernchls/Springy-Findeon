@@ -11,7 +11,6 @@ Use the raw `elastic-search` npm library, do not use any extra query building li
 - npm install
 
 Index Data
-----------
 - run elasticsearch in cmd line to start ElasticSearch server (default port is 9200)
 - run node client.js to create a new index
 - check that index was created using curl -XGET 'localhost:9200/_cat/indices?v&pretty' (should contain 800 items)
