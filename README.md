@@ -144,9 +144,9 @@ example: `/api/pokedex ...`
 
 **Example** : **types** = water, grass and flying will return 0 results.
 
-**Stat equals value
+##Stat equals value
 
-##User params : stat - value.
+**User params** : stat - value.
 
 **Result** : An array of documents where the stat property matches value.
 
