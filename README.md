@@ -2,13 +2,34 @@
 
 ElasticSearch exercise on an express api
 
-Use the raw `elastic-search` npm library, do not use any extra query building libraries for this exercise.
+Use the raw `elastic-search` npm library
 
 # Run and Test this project
 
-_TO BE FILLED IN BY YOU_
+- Fork and clone to local machine
+- navigate to corresponding directory
+- npm install
+
+Index The Data
+- run 'elasticsearch' in cmd line to start ElasticSearch server (default port is 9200)
+- run node client.js in cmd line, this will create your new index, and index the data
+- check that index was created using curl -XGET 'localhost:9200/_cat/indices?v&pretty' (should contain 800 items)
+
+Run Tests
+- npm test
+
+Test The Routes
+- run node server.js, this will start the server (default port is 3000)
+- navigate to localhost:3000/api/pokedex/ in your browser
+- testable routes below, make sure server is turned on
+- ENJOY
 
 
+Helpful Commands & Resources
+- delete index : curl -XDELETE 'localhost:9200/pokedex?pretty&pretty'
+- list all indices : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+
+http://elasticsearch-cheatsheet.jolicode.com/
 
 
 ## Focus
@@ -66,107 +87,120 @@ Based on the requirements in the following table, design your own API endpoints 
 All api routes should be mounted on the `/api/` route.
 example: `/api/pokedex ...`
 
-#### Get all
+##Get all
 
 **User params** : (none)
-**Result** : all documents in the index
 
-#### Get by id
+**Result** : An array with all documents in the index.
 
-**User params** : **id**
-**Result** : an array of 0 or 1 document that has an id that matches the **id** parameter **id** = `1`
+**Example**: Will not return all 800 results, just a snippet of the total index.
 
-will return the bulbasaur document
+**Testable Route**: localhost:3000/api/pokedex/
 
-#### Search name
+##Get by id
 
-**User params** : **query**
-**Result** : an array of documents where the name property matches **query**. **query** = `sy`
+**User params : id**
 
-will return the psyduck, and sylveon documents
+**Result** : An array of 0 or 1 document that has an id that matches the id.
 
-#### Name starts with
+**Example**: Parameter **id** = 0 will return the bulbasaur document.
 
-**User params** : **prefix**
-**Result** : an array of documents where the name property starts with **prefix**. **prefix** = `star`
-
-should return 5 results, staryu, staravia, starly and staraptor
-
-#### Types, or
-
-**User params** : types as a set of strings
-**Result** : an array of documents where the types property includes any of the types passed in as a parameter.
-
-**types** = `fire`
-
-should return 57 results
-
-**types** = `fire and ice`
-
-should return 92 results
-
-#### Types, and
-
-**User params** : types as a set of strings
-**Result** : an array of documents where the types property includes all the types passed in as a parameter.
-
-**types** = `fire`
-
-should return 57 results
-
-**types** = `water and grass`
-
-should return 3 results
-
-**types** = `water, grass and flying`
-
-should return 0 results
-
-#### Stat equals value
-
-**User params** : **stat** - **value**
-**Result** : an array of documents where the **stat** property matches **value**.
-
-**stat** = `HP` **value** = `160`
-
-should return 1 result, the snorlax document
-
-#### Stat above value
-
-**User params** : **stat** - **value**
-**Result** : an array of documents where the **stat** property is greater or equal than the **value** parameter.
-
-**stat** = `attack` **value** = `180`
-
-should return 2 results, mewtwomegamewtwox and rayquazamegarayquaza
-
-#### Stat below value
-
-**User params** : **stat** - **value**
-**Result** : an array of documents where the **stat** property is less than the **value** parameter.
-
-**stat** = `defense` **value** = `10`
-
-should return 2 results, mewtwomegamewtwox and rayquazamegarayquaza
-
-#### Stat between low and high values
-
-**User params** : **stat** - **low** - **high**
-**Result** : an array of documents where the **stat** property is greater than or equal to **low** and less than the **high** parameter.
-
-**stat** = `totalStats` **low** = `750` **high** = `800`
-
-should return 3 results, mewtwomegamewtwox, rayquazamegarayquaza, and kyogreprimalkyogre
-
----
-
-Once your endpoints have been approved by an instructor, implement each endpoint one at a time, while providing the requested subset of data.
-
-In express, create an es client, and query the es database to retrieve data for each endpoint.
+**Testable Route**: localhost:3000/api/pokedex/0
 
 
-### Optional
 
-Create a browser application with user controls to display query results.
+##Search name
 
-Hint: express static, `./public`, xhr requests to api
+**User params** : query
+
+**Result** : An array of documents where the name property matches query.
+
+**Example** : query = sy will return 2 results: psyduck, and sylveon.
+
+**Testable Route**: localhost:3000/api/pokedex/nameContains/sy
+
+##Name starts with
+
+**User params : prefix**
+
+**Result** : An array of documents where the name property starts with prefix.
+
+**Example** : prefix = star will return 5 results: staryu, starmie, starly, staraptor, and staravia.
+
+**Testable Route**: localhost:3000/api/pokedex/nameStartsWith/star
+
+##Types, or
+
+**User params** : Types as a set of strings.
+
+**Result** : An array of documents where the types property includes any of the types passed in as a parameter.
+
+**Example** : **types** = fire will return 64 results.
+
+**Example** : **types** = fire and ice will return 105 results.
+
+**Testable Route**: localhost:3000/api/pokedex/typeOR/fire
+
+**Testable Route**: localhost:3000/api/pokedex/typeOR/fire&ice
+
+##Types, and
+
+**User params** : Types as a set of strings.
+
+**Result** : An array of documents where the types property includes all the types passed in as a parameter.
+
+**Example** : **types** = fire will return 64 results.
+
+**Example** : **types** = water and grass will return 3 results.
+
+**Example** : **types** = water, grass and flying will return 0 results.
+
+**Testable Route**: localhost:3000/api/pokedex/typeAND/water/grass
+
+**Testable Route**: localhost:3000/api/pokedex/typeAND/water/grass/flying
+
+
+##Stat equals value
+
+**User params** : stat - value.
+
+**Result** : An array of documents where the stat property matches value.
+
+**Example** : **stat** = HP **value** = 160 will return 1 result: snorlax.
+
+**Testable Route**: localhost:3000/api/pokedex/stat/HP/160
+
+
+##Stat above value
+
+**User params** : stat - value.
+
+**Result** : An array of documents where the **stat** property is greater or equal than the **value** parameter.
+
+**Example** : **stat** = attack **value** = 180 will return 5 results: mewtwomegamewtwox, heracrossmegaheracross, groudonprimalgroudon, deoxysattackforme, and rayquazamegarayquaza.
+
+**Testable Route**: localhost:3000/api/pokedex/statGreaterThan/attack/180
+
+
+##Stat below value
+
+**User params** : stat - value.
+
+**Result** : An array of documents where the **stat** property is less than the **value** parameter.
+
+**Example** : **stat** = defense **value** = 10 will return 2 results: chansey and happiny.
+
+**Testable Route**: localhost:3000/api/pokedex/statLessThan/defense/10
+
+
+##Stat between low and high values
+
+**User params** : stat - low - high.
+
+**Result** : An array of documents where the **stat** property is greater than or equal to **low** and less than the **high** parameter.
+
+**Example** : **stat** = totalStats **low** = 750 **high** = 800 will return 5 results: mewtwomegamewtwox, mewtwomegamewtwox, kyogreprimalkyogre, groudonprimalgroudon, and rayquazamegarayquaza.
+
+**Testable Route**: localhost:3000/api/pokedex/statBetween/totalStats/750/800
+
+
